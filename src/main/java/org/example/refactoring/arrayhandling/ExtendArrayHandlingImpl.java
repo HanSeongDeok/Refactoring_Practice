@@ -2,6 +2,9 @@ package org.example.refactoring.arrayhandling;
 
 import java.util.stream.IntStream;
 
+/**
+ * 이건 객체지향 관점
+ */
 public class ExtendArrayHandlingImpl{
     private Object[] elements;
     private int size;
@@ -12,6 +15,7 @@ public class ExtendArrayHandlingImpl{
             return elements = newElements;
         };
     }
+
     public ExtendArrayHandlingImpl(Object[] elements, int size){
         this.elements = elements;
         this.size = size;
