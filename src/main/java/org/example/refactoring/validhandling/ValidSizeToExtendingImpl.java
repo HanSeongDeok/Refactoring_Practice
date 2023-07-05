@@ -1,5 +1,8 @@
 package org.example.refactoring.validhandling;
 
+/**
+ * 이건 객체지향 관점
+ */
 public class ValidSizeToExtendingImpl {
     private Object[] elements;
     private int size;
