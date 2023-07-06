@@ -36,6 +36,10 @@ public class Solution_One {
         System.out.println("Item: " + entity.itemName);
         System.out.println("Quantity: " + entity.quantity);
     }
+    public String getCustomerName() {return customerName;}
+    public String getCustomerAddress() {return customerAddress;}
+    public String getItemName() {return itemName;}
+    public int getQuantity() {return quantity;}
 
     // Solution_One 생성자 생성을 위임 받은 정적 내부 클래스
         public static class Solution_One_Builder {
