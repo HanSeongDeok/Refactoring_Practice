@@ -5,6 +5,7 @@ import org.example.refactoring2.rental.Rental;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 // 반복 되는 switch(냄새) -> 다형성을 이용해서 반복 제거
 
 // 순서 1. 각 Movie의 종류 마다 각각의 객체를 만든다.
