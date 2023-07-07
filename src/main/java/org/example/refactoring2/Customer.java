@@ -20,7 +20,7 @@ import java.util.stream.Stream;
 
 // 순서 7. 그리고 밑에 (기능 편애 냄새??) frequentRenterPoints 정책도 클래스 추출한 각각의 객체들의
 // 하위 기능으로 분류해서 응집도를 높인다.
-// TODO 가능하면 함수를 pure 하게 만들어서 함수형 프로그래밍 적용해보기
+
 class Customer {
     private String name;
     private List<Rental> rentals = new ArrayList<>();

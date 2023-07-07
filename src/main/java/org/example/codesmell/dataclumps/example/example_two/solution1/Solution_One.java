@@ -20,6 +20,7 @@ public class Solution_One {
     }
     /**
      * 빌더 패턴을 사용하여 생성자에 몰려있는 데이터 뭉치를 해결함.
+     * 장점 -> 중복을 최소화 할 수 있다. / 가독성을 높일 수 있다.
      * @param builder
      */
     private Solution_One(Solution_One_Builder builder) {
