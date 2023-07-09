@@ -9,7 +9,11 @@ public class FactorySolutionTwoImpl implements IFactorySolutionTwo {
     private String customerName;
     private String itemName;
     private int quantity;
-
+    FactorySolutionTwoImpl(){}
+    @Override
+    public Solution_Two build() {
+        return IFactorySolutionTwo.solution_Two_Factory(this).create();
+    }
     @Override
     public IFactorySolutionTwo setCustomerAddress(String customerAddress) {
         this.customerAddress = customerAddress;
@@ -18,28 +22,21 @@ public class FactorySolutionTwoImpl implements IFactorySolutionTwo {
     @Override
     public IFactorySolutionTwo setCustomerName(String customerName) {
         this.customerName = customerName;
-        return null;
+        return this;
     }
     @Override
     public IFactorySolutionTwo setItemName(String itemName) {
         this.itemName = itemName;
-        return null;
+        return this;
     }
-
     @Override
     public IFactorySolutionTwo setQuantity(int quantity) {
         this.quantity = quantity;
-        return null;
-    }
-
-    @Override
-    public Solution_Two build() {
-        return new Solution_Two(this);
+        return this;
     }
 
     public String getCustomerAddress() {return customerAddress;}
     public String getCustomerName() {return customerName;}
     public String getItemName() {return itemName;}
     public int getQuantity() {return quantity;}
-
 }
