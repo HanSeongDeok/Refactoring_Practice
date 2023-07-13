@@ -1,10 +1,12 @@
 package org.example.refactoring2.movie;
 
+import java.util.Arrays;
+import java.util.Collection;
+
 /**
  * 팩토리 패턴이 적용된 함수형 인터페이스
  * 영화 종류 별로 랜트 일자 별 가격 측정 값을 현재 누적 총 가격(thisAmount)에 더하여 반환한다.
  */
-@FunctionalInterface
 public interface PricePolicyByMovie {
     double setInfo(int rentDays, double thisAmount);
     /**
