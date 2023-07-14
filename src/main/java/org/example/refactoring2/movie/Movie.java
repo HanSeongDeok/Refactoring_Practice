@@ -1,6 +1,5 @@
 package org.example.refactoring2.movie;
 
-// DTO
 abstract public class Movie {
     public static final int CHILDRENS = 2;
     public static final int REGULAR = 0;
@@ -23,6 +22,7 @@ abstract public class Movie {
     public String getTitle() {
         return title;
     }
+    //TODO 좋지 못한 코드... 생성자로 빼는 것 밖에 생각이 안난다..
     public void setDaysRentedForMovie(int daysRented) {this.daysRentedForMovie = daysRented;}
     public int getDaysRentedForMovie() {return daysRentedForMovie;}
     abstract public double getAmount(double thisAmount);

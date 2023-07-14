@@ -1,5 +1,7 @@
 package org.example.refactoring2.movie;
 
+import org.example.refactoring2.Policy.PricePolicyByMovie;
+
 public class NewRelease extends Movie{
     private int daysRentedForNewReleaseMovie;
     protected NewRelease(String title, int priceCode) {
@@ -9,6 +11,5 @@ public class NewRelease extends Movie{
     @Override
     public double getAmount(double thisAmount) {
         return PricePolicyByMovie.getNewReleaseAmount().setInfo(daysRentedForNewReleaseMovie, thisAmount);
-        //return thisAmount + getDaysRentedForMovie() * 3;
     }
 }

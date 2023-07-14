@@ -1,5 +1,6 @@
 package org.example.refactoring2;
 
+import org.example.refactoring2.movie.Movie;
 import org.example.refactoring2.movie.NewRelease;
 import org.example.refactoring2.rental.Rental;
 
@@ -22,10 +23,10 @@ import java.util.stream.Stream;
 // 하위 기능으로 분류해서 응집도를 높인다.
 
 class Customer {
-    private String name;
-    private List<Rental> rentals = new ArrayList<>();
+    private final String name;
+    private final List<Rental<? extends Movie>> rentals = new ArrayList<>();
     public Customer(String name) {this.name = name;};
-    public void addRental(Rental rental) {rentals.add(rental);}
+    public void addRental(Rental<? extends Movie> rental) {rentals.add(rental);}
     public String getName() {return name;};
 
     public String statement() {
@@ -33,7 +34,7 @@ class Customer {
         int frequentRenterPoints = 0;
         String result = "Rental Record for " + getName() + "\n";
 
-        for(Rental each : rentals) {
+        for(Rental<? extends Movie> each : rentals) {
             double thisAmount = 0;
             thisAmount = each.getMovie().getAmount(thisAmount);
             // add frequent renter points
@@ -49,7 +50,7 @@ class Customer {
         return result;
     }
     // add bonus for a two day new release rental
-    private static int validAndSetFrequentRenterPoints(int frequentRenterPoints, Rental each) {
+    private static int validAndSetFrequentRenterPoints(int frequentRenterPoints, Rental<? extends Movie> each) {
         return ((each.getMovie().getClass() == NewRelease.class) && each.getDaysRented() > 1)
                 ? frequentRenterPoints + 1 : frequentRenterPoints;
     }

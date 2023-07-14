@@ -14,7 +14,6 @@ public class Solution_Two {
         public static FactorySolutionTwoImpl Solution_Two_Builder(){
             return IFactorySolutionTwo.builderFactory().create();
         }
-
     /**
      * 빌더 패턴을 사용하여 생성자에 몰려있는 데이터 뭉치를 해결함.
      * 장점 -> 중복을 최소화 할 수 있다. / 가독성을 높일 수 있다.
@@ -42,8 +41,7 @@ public class Solution_Two {
         // Solution_One 생성자 생성을 위임 받은 정적 내부 클래스
         // 빌더 클래스
 
-    /** 함수형 프로그래밍 장점 이런식으로 고차 함수를 만들 수 있다 **/
-    /** **/
+    /** 추후 고차 함수로 뻗어 나갈 수 있다 **/
     public static <T> T getObject(IFactory<T> factory) {
         return factory.create();
     }
