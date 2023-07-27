@@ -8,8 +8,13 @@ public class NewRelease extends Movie{
         super(title, priceCode);
         this.daysRentedForNewReleaseMovie = getDaysRentedForMovie();
     }
+   /* @Override
+    public double getAmount(double thisAmount) {
+        return PricePolicyByMovie.getNewReleaseAmount().setInfo(daysRentedForNewReleaseMovie, thisAmount);
+    }*/
     @Override
     public double getAmount(double thisAmount) {
         return PricePolicyByMovie.getNewReleaseAmount().setInfo(daysRentedForNewReleaseMovie, thisAmount);
     }
+
 }
