@@ -1,9 +1,9 @@
 package org.example.designpattern.decorator;
 
 import org.example.designpattern.decorator.badexample.RoadDisplay;
-import org.example.designpattern.decorator.badexample.RoadDisplayWithLane;
 import org.example.designpattern.decorator.badexample.RoadDisplayWithLaneTraffic;
 import org.example.designpattern.decorator.solutionexample.*;
+import org.example.designpattern.decorator.solutionexample.function.DisplayStream;
 
 public class Decorator_Pattern {
     public static void main(String[] args) {
@@ -29,6 +29,10 @@ public class Decorator_Pattern {
                                         new RoadDisplayMain()))));
         displayDecorator1.draw();
         System.out.println("-------------------------------------------");
+        /**
+         * 데커레이트와 함수형 프로그래밍 조합 적용 -> 핵심은 super 를 활용하여 매개변수로 들어온 객체를
+         * 데커레이트 객체로 보내 다형성을 이용한 draw 매서드를 실행하는 것이 핵심이다.
+         */
         try {
             DisplayDecorator displayDecorator2 = DisplayStream.stream()
                     .setLaneDisplay(new RoadDisplayMain())

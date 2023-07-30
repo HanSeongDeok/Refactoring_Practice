@@ -1,9 +1,7 @@
-package org.example.designpattern.decorator.solutionexample;
-import org.example.designpattern.decorator.solutionexample.function.Display;
+package org.example.designpattern.decorator.solutionexample.function;
+import org.example.designpattern.decorator.solutionexample.*;
 
 import java.util.*;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.BlockingQueue;
 
 /**
  * 데커레이터 패턴 이벤트 체인 스트림
