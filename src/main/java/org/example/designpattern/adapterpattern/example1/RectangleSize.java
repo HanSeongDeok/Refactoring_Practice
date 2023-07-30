@@ -1,4 +1,4 @@
-package org.example.designpattern.adapterpattern;
+package org.example.designpattern.adapterpattern.example1;
 
 import org.example.designpattern.adapterpattern.function.RectangleSizeBuilder;
 import org.example.designpattern.adapterpattern.function.Shape;
