@@ -4,9 +4,9 @@ import org.example.designpattern.adapterpattern.example1.LegacyRectangle;
 import org.example.designpattern.adapterpattern.example1.RectangleAdapter;
 import org.example.designpattern.adapterpattern.example1.RectangleSize;
 import org.example.designpattern.adapterpattern.example2.Square;
-import org.example.designpattern.adapterpattern.function.CalculateArea;
-import org.example.designpattern.adapterpattern.function.RectangleSizeBuilder;
-import org.example.designpattern.adapterpattern.function.Shape;
+import org.example.designpattern.adapterpattern.example2.functnion.CalculateArea;
+import org.example.designpattern.adapterpattern.example1.function.RectangleSizeBuilder;
+import org.example.designpattern.adapterpattern.example1.function.Shape;
 
 public class Adapter_Pattern {
     public static void main(String[] args) {

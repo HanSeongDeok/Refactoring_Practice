@@ -1,5 +1,7 @@
 package org.example.refactoring2.movie;
 
+import java.util.regex.Pattern;
+
 abstract public class Movie {
     public static final int CHILDRENS = 2;
     public static final int REGULAR = 0;

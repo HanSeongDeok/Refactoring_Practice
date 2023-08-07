@@ -1,7 +1,7 @@
 package org.example.designpattern.adapterpattern.example2;
 
-import org.example.designpattern.adapterpattern.function.CalculateArea;
-import org.example.designpattern.adapterpattern.function.Rectangle;
+import org.example.designpattern.adapterpattern.example2.functnion.CalculateArea;
+import org.example.designpattern.adapterpattern.example2.functnion.Rectangle;
 
 public class RectangleAdapter implements Rectangle {
     Square square;

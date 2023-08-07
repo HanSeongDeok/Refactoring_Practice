@@ -1,4 +1,4 @@
-package org.example.designpattern.adapterpattern.function;
+package org.example.designpattern.adapterpattern.example1.function;
 
 import org.example.designpattern.adapterpattern.example1.RectangleSize;
 

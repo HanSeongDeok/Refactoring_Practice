@@ -1,6 +1,6 @@
 package org.example.designpattern.adapterpattern.example1;
 
-import org.example.designpattern.adapterpattern.function.Shape;
+import org.example.designpattern.adapterpattern.example1.function.Shape;
 
 public class RectangleAdapter implements Shape {
     private LegacyRectangle legacyRectangle;
