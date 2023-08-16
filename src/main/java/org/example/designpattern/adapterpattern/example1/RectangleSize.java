@@ -1,9 +1,7 @@
 package org.example.designpattern.adapterpattern.example1;
 
-import org.example.designpattern.adapterpattern.function.RectangleSizeBuilder;
-import org.example.designpattern.adapterpattern.function.Shape;
+import org.example.designpattern.adapterpattern.example1.function.RectangleSizeBuilder;
 
-import java.util.List;
 import java.util.Map;
 
 public class RectangleSize {

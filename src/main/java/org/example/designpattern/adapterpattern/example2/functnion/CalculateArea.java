@@ -1,4 +1,4 @@
-package org.example.designpattern.adapterpattern.function;
+package org.example.designpattern.adapterpattern.example2.functnion;
 
 @FunctionalInterface
 public interface CalculateArea {
