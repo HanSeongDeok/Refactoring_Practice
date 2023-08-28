@@ -12,19 +12,15 @@ import java.util.stream.Stream;
 public class Rental<T extends Movie> {
     private T movie;
     private int daysRented;
-
     public Rental(T movie, int daysRented) {
         this.movie = movie;
         this.daysRented = daysRented;
-        setRentalDay(movie, daysRented);
     }
-    private void setRentalDay(T movie, int daysRented) {
-        movie.setDaysRentedForMovie(daysRented);
+    public Rental(T movie) {
+        this.movie = movie;
     }
-    public int getDaysRented() {
-        return daysRented;
-    }
-    public T getMovie() {
-        return movie;
-    }
+    @Deprecated
+    public int getDaysRented() {return daysRented;}
+    public T getMovie() {return movie;}
+    public int getDaysRentedNew() {return movie.getDaysRented();}
 }

@@ -28,30 +28,41 @@ class Customer {
     public Customer(String name) {this.name = name;};
     public void addRental(Rental<? extends Movie> rental) {rentals.add(rental);}
     public String getName() {return name;};
-
     public String statement() {
         double totalAmount = 0;
         int frequentRenterPoints = 0;
-        String result = "Rental Record for " + getName() + "\n";
-
+        StringBuilder contents = new StringBuilder();
         for(Rental<? extends Movie> each : rentals) {
             double thisAmount = 0;
-            thisAmount = each.getMovie().getAmount(thisAmount);
-            // add frequent renter points
-            frequentRenterPoints++;
-            // add bonus for a two day new release rental
-            frequentRenterPoints = validAndSetFrequentRenterPoints(frequentRenterPoints, each);
-            // show figures
-            result += "\t" +  String.valueOf(thisAmount) + "(" + each.getMovie().getTitle() + ")" + "\n";
+            thisAmount = getAmount(each, thisAmount);
+            frequentRenterPoints = validAndSetFrequentRenterPoints(++frequentRenterPoints, each);
+            contents = getSubContents(contents, each, thisAmount);
             totalAmount += thisAmount;
         }
+        return getResultContent(totalAmount, frequentRenterPoints, contents.toString());
+    }
+
+    private double getAmount(Rental<? extends Movie> each, double thisAmount) {
+        return each.getMovie().getAmount(thisAmount);
+    }
+
+    private StringBuilder getSubContents(StringBuilder contents, Rental<? extends Movie> each, double thisAmount) {
+        return contents.append("\t")
+                .append(thisAmount)
+                .append("(")
+                .append(each.getMovie().getTitle()).append(")")
+                .append("\n");
+    }
+
+    private String getResultContent(double totalAmount, int frequentRenterPoints, String contents) {
+        String result = "Rental Record for " + getName() + "\n";
+        result += contents;
         result += "Amount owed is " + String.valueOf(totalAmount) + "\n";
         result += "You earned " + String.valueOf(frequentRenterPoints) + " frequent renter pointers";
         return result;
     }
-    // add bonus for a two day new release rental
     private static int validAndSetFrequentRenterPoints(int frequentRenterPoints, Rental<? extends Movie> each) {
-        return ((each.getMovie().getClass() == NewRelease.class) && each.getDaysRented() > 1)
+        return ((each.getMovie().getClass() == NewRelease.class) && each.getDaysRentedNew() > 1)
                 ? frequentRenterPoints + 1 : frequentRenterPoints;
     }
 
