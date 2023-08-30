@@ -15,6 +15,7 @@ abstract public class Movie {
     public static Movie factory(MovieBuilder movieBuilder) throws IllegalAccessException {
         try {
             MovieBuilderImpl builder = (MovieBuilderImpl) movieBuilder;
+            // 생성자 인자 값 -> 타이틀, 프라이스코드, 렌탈 데이트
             if (builder.getType() == CHILDREN)  movie = new Children(builder.getTitle(), builder.getPriceCode(), builder.getDatesRented());
             if (builder.getType() == REGULAR)  movie = new Regular(builder.getTitle(), builder.getPriceCode(), builder.getDatesRented());
             if (builder.getType() == NEW_RELEASE) movie = new NewRelease(builder.getTitle(), builder.getPriceCode(), builder.getDatesRented());
