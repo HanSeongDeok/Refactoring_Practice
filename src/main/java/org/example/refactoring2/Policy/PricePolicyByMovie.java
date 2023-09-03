@@ -3,6 +3,7 @@ package org.example.refactoring2.Policy;
 /**
  * 영화 종류 별로 랜트 일자 별 가격 측정 값을 현재 누적 총 가격(thisAmount)에 더하여 반환한다.
  */
+@Deprecated
 public interface PricePolicyByMovie {
     double getAmount(int rentDays, double thisAmount);
     /**
