@@ -9,18 +9,18 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Stream;
-public class Rental<T extends Movie> {
-    private T movie;
+public class Rental {
+    private Movie movie;
     private int daysRented;
-    public Rental(T movie, int daysRented) {
+    public Rental(Movie movie, int daysRented) {
         this.movie = movie;
         this.daysRented = daysRented;
     }
-    public Rental(T movie) {
+    public Rental(Movie movie) {
         this.movie = movie;
     }
     @Deprecated
     public int getDaysRented() {return daysRented;}
-    public T getMovie() {return movie;}
+    public Movie getMovie() {return movie;}
     public int getDaysRentedNew() {return movie.getDaysRented();}
 }

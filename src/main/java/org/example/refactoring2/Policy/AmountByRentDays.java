@@ -6,5 +6,5 @@ package org.example.refactoring2.Policy;
  */
 @FunctionalInterface
 public interface AmountByRentDays {
-    double amount(int rentDays, double thisAmount);
+    double getAmount(int rentDays, double thisAmount);
 }

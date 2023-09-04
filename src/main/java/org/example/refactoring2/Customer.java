@@ -1,5 +1,8 @@
 package org.example.refactoring2;
 
+import org.example.refactoring2.function.CustomerFunction;
+import org.example.refactoring2.function.StatementsBuilder;
+import org.example.refactoring2.function.StatementsBuilderImpl;
 import org.example.refactoring2.movie.Movie;
 import org.example.refactoring2.movie.NewRelease;
 import org.example.refactoring2.rental.Rental;
@@ -22,49 +25,49 @@ import java.util.stream.Stream;
 // 순서 7. 그리고 밑에 (기능 편애 냄새??) frequentRenterPoints 정책도 클래스 추출한 각각의 객체들의
 // 하위 기능으로 분류해서 응집도를 높인다.
 
-class Customer {
+class Customer implements CustomerFunction {
     private final String name;
-    private final List<Rental<? extends Movie>> rentals = new ArrayList<>();
+    private final List<Rental> rentals = new ArrayList<>();
     public Customer(String name) {this.name = name;};
-    public void addRental(Rental<? extends Movie> rental) {rentals.add(rental);}
-    public String getName() {return name;};
+    public void addRental(Rental rental) {rentals.add(rental);}
+    public String getName() {return name;}
     public String statement() {
+        // init setting 초기화
         double totalAmount = 0;
         int frequentRenterPoints = 0;
         StringBuilder contents = new StringBuilder();
-        for(Rental<? extends Movie> each : rentals) {
+
+        // @parameter -> client 구현 부에 출력해줄 내용을 담은 builder
+        return getStatementContents(StatementsBuilderImpl.builder()
+                .setContents(contents)
+                .setFrequentRenterPoints(frequentRenterPoints)
+                .setTotalAmount(totalAmount)
+                .done());
+    }
+    //
+    private String getStatementContents(StatementsBuilder statementsBuilder) {
+        StatementsBuilderImpl builder = (StatementsBuilderImpl) statementsBuilder;
+        for(Rental each : rentals) {
             double thisAmount = 0;
+            double totalAmount = builder.getTotalAmount();
             thisAmount = getAmount(each, thisAmount);
-            frequentRenterPoints = validAndSetFrequentRenterPoints(++frequentRenterPoints, each);
-            contents = getSubContents(contents, each, thisAmount);
-            totalAmount += thisAmount;
+
+            // rental 한 영화 중 포인터를 추가해야할 영화가 들어 있는지 확인 및 포인트 추가
+            CustomerFunction.validAndSetFrequentRenterPoints(statementsBuilder, each);
+            // 영화 제목과 해당 영화의 가격을 출력할 Contents
+            getSubContents(statementsBuilder, each, thisAmount);
+            // rental 목록 전체의 가격
+            statementsBuilder.setTotalAmount(totalAmount + thisAmount);
         }
-        return getResultContent(totalAmount, frequentRenterPoints, contents.toString());
+        // 최종 출력 Contents 반환
+        return getResultContent(statementsBuilder, getName());
     }
 
-    private double getAmount(Rental<? extends Movie> each, double thisAmount) {
-        return each.getMovie().getAmount(thisAmount);
-    }
-
-    private StringBuilder getSubContents(StringBuilder contents, Rental<? extends Movie> each, double thisAmount) {
-        return contents.append("\t")
-                .append(thisAmount)
-                .append("(")
-                .append(each.getMovie().getTitle()).append(")")
-                .append("\n");
-    }
-
-    private String getResultContent(double totalAmount, int frequentRenterPoints, String contents) {
-        String result = "Rental Record for " + getName() + "\n";
-        result += contents;
-        result += "Amount owed is " + String.valueOf(totalAmount) + "\n";
-        result += "You earned " + String.valueOf(frequentRenterPoints) + " frequent renter pointers";
-        return result;
-    }
-    private static int validAndSetFrequentRenterPoints(int frequentRenterPoints, Rental<? extends Movie> each) {
+    private static int validAndSetFrequentRenterPoints(int frequentRenterPoints, Rental each) {
         return ((each.getMovie().getClass() == NewRelease.class) && each.getDaysRentedNew() > 1)
                 ? frequentRenterPoints + 1 : frequentRenterPoints;
     }
+}
 
     /*
     private static double getCHILDRENSAmount(Rental each, double thisAmount) {
@@ -86,4 +89,3 @@ class Customer {
         return thisAmount;
     }
      */
-}

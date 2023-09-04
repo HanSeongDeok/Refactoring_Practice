@@ -38,5 +38,6 @@ abstract public class Movie {
     public void setPriceCode(int arg) {priceCode = arg;}
     public String getTitle() {return title;}
     public int getDaysRented() {return datsRented;}
-    abstract public double getAmount(double thisAmount);
+    abstract public double getAmount2(double thisAmount);
+    abstract public int getType();
 }

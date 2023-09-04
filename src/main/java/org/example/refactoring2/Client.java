@@ -15,7 +15,7 @@ public class Client {
                 .done());
 
         // rental 인스턴스 생성
-        Rental<Movie> rentalRegularMovie = new Rental<>(regularMovie);
+        Rental rentalRegularMovie = new Rental(regularMovie);
 
         // customer 인스턴스 생성
         Customer han = new Customer("Han");
