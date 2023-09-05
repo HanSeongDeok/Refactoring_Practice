@@ -39,10 +39,10 @@ class Customer implements CustomerFunction {
 
         // @parameter -> client 구현 부에 출력해줄 내용을 담은 builder
         return getStatementContents(StatementsBuilderImpl.builder()
-                .setContents(contents)
-                .setFrequentRenterPoints(frequentRenterPoints)
-                .setTotalAmount(totalAmount)
-                .done());
+                    .setContents(contents)
+                    .setFrequentRenterPoints(frequentRenterPoints)
+                    .setTotalAmount(totalAmount)
+                    .done());
     }
     //
     private String getStatementContents(StatementsBuilder statementsBuilder) {
@@ -50,8 +50,9 @@ class Customer implements CustomerFunction {
         for(Rental each : rentals) {
             double thisAmount = 0;
             double totalAmount = builder.getTotalAmount();
-            thisAmount = getAmount(each, thisAmount);
 
+            //
+            thisAmount = getAmount(each, thisAmount);
             // rental 한 영화 중 포인터를 추가해야할 영화가 들어 있는지 확인 및 포인트 추가
             CustomerFunction.validAndSetFrequentRenterPoints(statementsBuilder, each);
             // 영화 제목과 해당 영화의 가격을 출력할 Contents

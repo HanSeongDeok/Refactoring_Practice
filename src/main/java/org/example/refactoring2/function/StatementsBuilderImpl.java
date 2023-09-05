@@ -16,7 +16,7 @@ public class StatementsBuilderImpl implements StatementsBuilder{
     private static StatementsBuilderImpl statementsBuilder;
     private StatementsBuilderImpl(){}
 
-    // factory
+    // singleton-factory
     public static StatementsBuilder builder(){
         if (statementsBuilder == null) statementsBuilder = new StatementsBuilderImpl();
         return statementsBuilder;

@@ -10,6 +10,8 @@ public class MovieBuilderImpl implements MovieBuilder{
     public int getPriceCode() {return priceCode;}
     public int getDatesRented() {return datesRented;}
     private MovieBuilderImpl(){}
+
+    //factory
     public static MovieBuilder builder(){
         return new MovieBuilderImpl();
     }

@@ -27,8 +27,8 @@ public interface CustomerFunction {
         StatementsBuilderImpl builder = (StatementsBuilderImpl) statementsBuilder;
         String result = "Rental Record for " + name + "\n";
         result += builder.getContents();
-        result += "Amount owed is " + String.valueOf(builder.getTotalAmount()) + "\n";
-        result += "You earned " + String.valueOf(builder.getFrequentRenterPoints()) + " frequent renter pointers";
+        result += "Amount owed is " + builder.getTotalAmount() + "\n";
+        result += "You earned " + builder.getFrequentRenterPoints() + " frequent renter pointers";
         return result;
     }
 
