@@ -1,14 +1,10 @@
 package org.example.refactoring2.function;
 
-import org.example.refactoring2.movie.NewRelease;
-import org.example.refactoring2.rental.Rental;
-
 public class StatementsBuilderImpl implements StatementsBuilder{
     // field
     private double totalAmount;
     private int frequentRenterPoints;
     private StringBuilder contents;
-
     // getter
     public double getTotalAmount() {return totalAmount;}
     public int getFrequentRenterPoints() {return frequentRenterPoints;}

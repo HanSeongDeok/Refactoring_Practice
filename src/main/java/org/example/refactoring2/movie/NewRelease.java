@@ -1,6 +1,5 @@
 package org.example.refactoring2.movie;
 
-import org.example.refactoring2.Policy.PricePolicyByMovie;
 import org.example.refactoring2.Policy.PricePolicyByMovie2;
 
 public class NewRelease extends Movie{

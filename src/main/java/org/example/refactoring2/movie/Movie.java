@@ -4,7 +4,6 @@ import org.example.refactoring2.movie.function.MovieBuilder;
 import org.example.refactoring2.movie.function.MovieBuilderImpl;
 
 import java.util.Optional;
-import java.util.regex.Pattern;
 
 abstract public class Movie {
     public static final int CHILDREN = 2;
