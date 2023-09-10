@@ -22,12 +22,12 @@ public class CustomerFunctionImpl implements CustomerFunction{
         return new CustomerFunctionImpl(statementsBuilder, each, thisAmount);
     }
     @Override
-    public CustomerFunction amountPerOne(CreateAmount createAmount) {
+    public CustomerFunction thisAmount(CreateAmount createAmount) {
         createAmount.getAmount(this.each, thisAmount);
         return this;
     }
     @Override
-    public CustomerFunction setSubContents(ContentByStringBuilder contentByStringBuilder) {
+    public CustomerFunction contents(ContentByStringBuilder contentByStringBuilder) {
         contentByStringBuilder.createContent(statementsBuilder, each, thisAmount);
         return this;
     }
@@ -37,7 +37,7 @@ public class CustomerFunctionImpl implements CustomerFunction{
         return this;
     }
     @Override
-    public CustomerFunction setTotalAmount(CreateTotalAmount createTotalAmount) {
+    public CustomerFunction totalAmount(CreateTotalAmount createTotalAmount) {
         createTotalAmount.total(statementsBuilder, thisAmount);
         return this;
     }

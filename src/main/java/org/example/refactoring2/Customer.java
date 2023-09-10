@@ -46,17 +46,27 @@ class Customer extends CustomerFunctionImpl {
     private String getStatementContents2(StatementsBuilder statementsBuilder) {
         for(Rental each : rentals) {
             double thisAmount = 0;
-            CustomerFunctionImpl.function(statementsBuilder, each, thisAmount)
-                    .amountPerOne(createAmount()) // 해당 영화의 단일 가격 측정
-                    .validAndSetFrequentRenterPoints(createRentalPoint()) // 영화 종류별 렌탈 포인터 측정
-                    .setSubContents(createSubContent()) // 해당 영화의 제목과 가격 출력 내용
-                    .setTotalAmount(createTotalAmount()) // 렌탈할 전체 가격 측정
-                    .valid(); // 예외처리 구현 부
+            // statementsBuilder 필드에 최종적으로 사용자에게 출력될 정보들을 저장한다.
+            setBuilderForStatementContents(statementsBuilder, each, thisAmount);
         }
         // 최종 출력 Contents 반환
         return getResultContent(statementsBuilder, getName());
     }
-    //
+    // Statement Contents 의 내용에 필요한 StatementsBuilder 필드 값 세팅
+    // 단점: 설계 및 구현 까지 시간이 좀 더 필요하다. 잘못 설계 시 엄청 복잡해져서 (n차 함수) 가독이 불편해 질 수 있다.
+    // 단점: 리소스가 더 추가된다.
+    private boolean setBuilderForStatementContents(StatementsBuilder statementsBuilder, Rental each, double thisAmount) {
+        return CustomerFunctionImpl.function(statementsBuilder, each, thisAmount)
+                    .thisAmount(createAmount()) // 해당 영화의 단일 가격 측정
+                    .validAndSetFrequentRenterPoints(createRentalPoint()) // 영화 종류별 렌탈 포인터 측정
+                    .contents(createSubContent()) // 해당 영화의 제목과 가격 출력 내용
+                    .totalAmount(createTotalAmount()) // 렌탈 전체 가격 측정
+                    .valid(); // 예외처리 구현 부
+    }
+
+    // 함수 추출을 통해 나온 private 메서드들을 CustomFunction 인터페이스로 추상화 하여 사용.
+    // 단점: 파이프 라인이 한 단계 더 길어지고, 조금의 리소스가 더 추가된다. 오히려 더 불편할 수도 있다.
+    // 장점: 각각의 메서드들을 한 곳에 응집시켜 놈으로 확장과 재사용에 유리하며 테스트가 용이해진다.
     private String getStatementContents(StatementsBuilder statementsBuilder) {
         StatementsBuilderImpl builder = (StatementsBuilderImpl) statementsBuilder;
         for(Rental each : rentals) {
@@ -73,35 +83,6 @@ class Customer extends CustomerFunctionImpl {
         }
         // 최종 출력 Contents 반환
         return getResultContent(statementsBuilder, getName());
-    }
-
-    private CreateAmount createAmount(){
-        return (each, thisAmount) -> each.getMovie().getAmount2(thisAmount);
-    }
-
-    private ContentByStringBuilder createSubContent(){
-        return (builder, each, thisAmount) -> {
-            builder.setContents(((StatementsBuilderImpl)builder).getContents().append("\t")
-                    .append(thisAmount)
-                    .append("(")
-                    .append(each.getMovie().getTitle()).append(")")
-                    .append("\n"));
-        };
-    }
-    private CreateRentalPoint createRentalPoint(){
-        return (builder, each) -> {
-            int frequentRenterPoints = ((StatementsBuilderImpl)builder).getFrequentRenterPoints();
-            // NEW_RELEASE 영화를 이틀 이상 빌렸을 때 포인트 +1 하여 builder point 에 update 한다
-            builder.setFrequentRenterPoints((each.getMovie().getType() == NewRelease.NEW_RELEASE && each.getDaysRentedNew() > 1)
-                    ? frequentRenterPoints + 2 : frequentRenterPoints + 1);
-        };
-    }
-
-    private CreateTotalAmount createTotalAmount(){
-        return (builder, thisAmount) -> {
-            double totalAmount = ((StatementsBuilderImpl)builder).getTotalAmount();
-            builder.setTotalAmount(totalAmount + thisAmount);
-        };
     }
 }
 
