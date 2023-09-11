@@ -12,7 +12,6 @@ public class Rental {
     public Rental(Movie movie) {
         this.movie = movie;
     }
-    @Deprecated
     public int getDaysRented() {return daysRented;}
     public Movie getMovie() {return movie;}
     public int getDaysRentedNew() {return movie.getDaysRented();}

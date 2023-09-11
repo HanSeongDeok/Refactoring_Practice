@@ -23,7 +23,7 @@ public class CustomerFunctionImpl implements CustomerFunction{
     }
     @Override
     public CustomerFunction thisAmount(CreateAmount createAmount) {
-        createAmount.getAmount(this.each, thisAmount);
+        thisAmount = createAmount.getAmount(this.each, thisAmount);
         return this;
     }
     @Override
@@ -41,7 +41,6 @@ public class CustomerFunctionImpl implements CustomerFunction{
         createTotalAmount.total(statementsBuilder, thisAmount);
         return this;
     }
-
     // 명시적으로 마지막 이벤트 체인임을 알림
     @Override
     public boolean valid() {

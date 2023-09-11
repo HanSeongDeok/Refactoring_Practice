@@ -37,7 +37,7 @@ class Customer extends CustomerFunctionImpl {
     public String getName() {return name;}
     public String statement() {
         // init setting 초기화
-        return getStatementContents(StatementsBuilderImpl.builder()
+        return getStatementContents2(StatementsBuilderImpl.builder()
                     .setContents(new StringBuilder())
                     .setFrequentRenterPoints(0)
                     .setTotalAmount(0)
@@ -53,8 +53,10 @@ class Customer extends CustomerFunctionImpl {
         return getResultContent(statementsBuilder, getName());
     }
     // Statement Contents 의 내용에 필요한 StatementsBuilder 필드 값 세팅
-    // 단점: 설계 및 구현 까지 시간이 좀 더 필요하다. 잘못 설계 시 엄청 복잡해져서 (n차 함수) 가독이 불편해 질 수 있다.
-    // 단점: 리소스가 더 추가된다.
+    // 단점: 설계 및 구현 까지 시간이 더 필요하다. 복잡한 설계 시 한 없이 복잡해져서 (n차 함수) 가독이 불편해 질 수 있다.
+    // 단점: 리소스가 더 추가된다. 유지보수가 까다로울 수 있다.
+    // 장점: 한 눈에 보기 편하다 코드 라인을 줄일 수 있다. 전역 변수를 사용하지 않음에 따라 무결성을 보장한다.
+    // 장점: 멀티 스레드 환경에서 비교적 안전하다. 테스트 코드 구현이 용이해진다. 극대화 된 캡슐화
     private boolean setBuilderForStatementContents(StatementsBuilder statementsBuilder, Rental each, double thisAmount) {
         return CustomerFunctionImpl.function(statementsBuilder, each, thisAmount)
                     .thisAmount(createAmount()) // 해당 영화의 단일 가격 측정

@@ -19,6 +19,5 @@ public interface PricePolicyByMovie2 {
             return (rentDays > 2) ? thisAmount + (rentDays - 2) * 1.5 : thisAmount;
         };
     }
-
     // default 로도 적용 가능
 }
