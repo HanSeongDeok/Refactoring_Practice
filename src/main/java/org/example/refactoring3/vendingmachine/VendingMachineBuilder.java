@@ -1,4 +1,4 @@
-package org.example.refactoring3;
+package org.example.refactoring3.vendingmachine;
 
 import java.util.List;
 
