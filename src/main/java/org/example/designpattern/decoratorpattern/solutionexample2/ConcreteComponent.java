@@ -1,6 +1,6 @@
-package org.example.designpattern.decorator.solutionexample2;
+package org.example.designpattern.decoratorpattern.solutionexample2;
 
-import org.example.designpattern.decorator.solutionexample2.function.Component;
+import org.example.designpattern.decoratorpattern.solutionexample2.function.Component;
 
 public class ConcreteComponent implements Component {
     @Override

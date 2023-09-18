@@ -11,9 +11,9 @@ abstract public class Movie {
     public static final int NEW_RELEASE = 1;
     private static Movie movie;
     // @Refactoring 객체로 넘기기 기법
-    public static Movie factory(MovieBuilder movieBuilder) throws IllegalAccessException {
+    public static Movie factory(MovieBuilderImpl movieBuilder) throws IllegalAccessException {
         try {
-            MovieBuilderImpl builder = (MovieBuilderImpl) movieBuilder;
+            MovieBuilderImpl builder = movieBuilder;
             // 생성자 인자 값 -> 타이틀, 프라이스코드, 렌탈 데이트
             if (builder.getType() == CHILDREN)  movie = new Children(builder.getTitle(), builder.getPriceCode(), builder.getDatesRented());
             if (builder.getType() == REGULAR)  movie = new Regular(builder.getTitle(), builder.getPriceCode(), builder.getDatesRented());

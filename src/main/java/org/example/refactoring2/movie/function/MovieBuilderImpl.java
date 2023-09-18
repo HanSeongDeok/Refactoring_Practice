@@ -16,7 +16,7 @@ public class MovieBuilderImpl implements MovieBuilder{
         return new MovieBuilderImpl();
     }
     @Override
-    public MovieBuilder done() {
+    public MovieBuilderImpl done() {
         if (getType() == -1 || getDatesRented() == 0) throw new IllegalStateException("Must Set Type And DatesRented");
         return this;
     }

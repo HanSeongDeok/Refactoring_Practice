@@ -4,5 +4,5 @@ public interface StatementsBuilder {
     StatementsBuilder setTotalAmount(double amount);
     StatementsBuilder setFrequentRenterPoints(int frequentRenterPoints);
     StatementsBuilder setContents(StringBuilder stringBuilder);
-    StatementsBuilder done();
+    StatementsBuilderImpl done();
 }

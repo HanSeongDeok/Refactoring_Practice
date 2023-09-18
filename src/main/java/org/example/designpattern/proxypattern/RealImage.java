@@ -1,4 +1,4 @@
-package org.example.designpattern.proxy;
+package org.example.designpattern.proxypattern;
 
 public class RealImage implements Image{
     private String file;

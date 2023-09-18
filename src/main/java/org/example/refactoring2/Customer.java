@@ -69,11 +69,10 @@ class Customer extends CustomerFunctionImpl {
     // 함수 추출을 통해 나온 private 메서드들을 CustomFunction 인터페이스로 추상화 하여 사용.
     // 단점: 파이프 라인이 한 단계 더 길어지고, 조금의 리소스가 더 추가된다. 오히려 더 불편할 수도 있다.
     // 장점: 각각의 메서드들을 한 곳에 응집시켜 놈으로 확장과 재사용에 유리하며 테스트가 용이해진다.
-    private String getStatementContents(StatementsBuilder statementsBuilder) {
-        StatementsBuilderImpl builder = (StatementsBuilderImpl) statementsBuilder;
+    private String getStatementContents(StatementsBuilderImpl statementsBuilder) {
         for(Rental each : rentals) {
             double thisAmount = 0;
-            double totalAmount = builder.getTotalAmount();
+            double totalAmount = statementsBuilder.getTotalAmount();
             // 해당 종류의 영화 가격
             thisAmount = getAmount(each, thisAmount);
             // rental 한 영화 중 포인터를 추가해야할 영화가 들어 있는지 확인 및 포인트 추가

@@ -1,9 +1,9 @@
-package org.example.designpattern.decorator;
+package org.example.designpattern.decoratorpattern;
 
-import org.example.designpattern.decorator.badexample.RoadDisplay;
-import org.example.designpattern.decorator.badexample.RoadDisplayWithLaneTraffic;
-import org.example.designpattern.decorator.solutionexample.*;
-import org.example.designpattern.decorator.solutionexample.function.DisplayStream;
+import org.example.designpattern.decoratorpattern.badexample.RoadDisplay;
+import org.example.designpattern.decoratorpattern.badexample.RoadDisplayWithLaneTraffic;
+import org.example.designpattern.decoratorpattern.solutionexample.*;
+import org.example.designpattern.decoratorpattern.solutionexample.function.DisplayStream;
 
 public class Decorator_Pattern {
     public static void main(String[] args) {

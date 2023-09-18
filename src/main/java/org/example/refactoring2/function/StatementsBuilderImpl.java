@@ -36,7 +36,7 @@ public class StatementsBuilderImpl implements StatementsBuilder{
     }
     // 명시적으로 setting 이 끝났음을 알림
     @Override
-    public StatementsBuilder done() {
+    public StatementsBuilderImpl done() {
         // TODO validation
         return this;
     }

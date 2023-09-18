@@ -1,5 +1,5 @@
-package org.example.designpattern.decorator.solutionexample.function;
-import org.example.designpattern.decorator.solutionexample.*;
+package org.example.designpattern.decoratorpattern.solutionexample.function;
+import org.example.designpattern.decoratorpattern.solutionexample.*;
 
 import java.util.*;
 

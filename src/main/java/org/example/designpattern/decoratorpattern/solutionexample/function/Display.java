@@ -1,4 +1,4 @@
-package org.example.designpattern.decorator.solutionexample.function;
+package org.example.designpattern.decoratorpattern.solutionexample.function;
 
 /**
  * Draw AnyThing For The Making Traffic Load

@@ -1,4 +1,4 @@
-package org.example.designpattern.decorator.badexample;
+package org.example.designpattern.decoratorpattern.badexample;
 
 public class RoadDisplayWithLaneTraffic extends RoadDisplay{
     @Override

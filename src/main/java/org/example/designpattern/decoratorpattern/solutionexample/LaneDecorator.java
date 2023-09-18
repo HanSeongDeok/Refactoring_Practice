@@ -1,6 +1,6 @@
-package org.example.designpattern.decorator.solutionexample;
+package org.example.designpattern.decoratorpattern.solutionexample;
 
-import org.example.designpattern.decorator.solutionexample.function.Display;
+import org.example.designpattern.decoratorpattern.solutionexample.function.Display;
 
 public class LaneDecorator extends DisplayDecorator{
     public LaneDecorator(Display display) {
