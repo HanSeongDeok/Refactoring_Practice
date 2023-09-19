@@ -1,10 +1,12 @@
 package org.example.refactoring3.gildedrose;
 
-class GildedRose {
-    Item[] items;
+import com.sun.tracing.dtrace.FunctionAttributes;
+
+class GildedRose extends GildedroseFunctionImpl{
     public GildedRose(Item[] items) {
         this.items = items;
     }
+
     public void updateQuality() {
         for (int i = 0; i < items.length; i++) {
             if (isNotAgedBrieAndNotBackStage(i) && isQualityOverZero(i) && isNotSulfuras(i)) {
