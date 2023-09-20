@@ -8,4 +8,5 @@ public interface GildedroseFunction {
     GildedroseFunctionImpl checkOneBooleanBranch(CheckOneBooleanBranch one);
     GildedroseFunctionImpl checkTwoBooleanBranch(CheckTwoBooleanBranch two);
     GildedroseFunctionImpl checkThreeBooleanBranch(CheckThreeBooleanBranch three);
+    GildedroseFunctionImpl done();
 }
