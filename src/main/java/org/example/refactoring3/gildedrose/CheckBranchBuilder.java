@@ -5,5 +5,8 @@ public interface CheckBranchBuilder {
     CheckBranchBuilderImpl setIsTAFKAL80ETC(boolean check);
     CheckBranchBuilderImpl setIsSellinUnderEleven(boolean check);
     CheckBranchBuilderImpl setIsSellinUnderSix(boolean check);
+    CheckBranchBuilderImpl setIsNotAgedBrieAndNotBackStage(boolean check);
+    CheckBranchBuilderImpl setIsQualityOverZero(boolean check);
+    CheckBranchBuilderImpl setIsNotSulfuras(boolean check);
     CheckBranchBuilderImpl done();
 }
