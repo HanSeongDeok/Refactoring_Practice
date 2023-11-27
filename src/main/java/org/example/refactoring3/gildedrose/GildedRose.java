@@ -1,7 +1,5 @@
 package org.example.refactoring3.gildedrose;
 
-import com.sun.tracing.dtrace.FunctionAttributes;
-
 class GildedRose{
     Item[] items;
     public GildedRose(Item[] items) {
