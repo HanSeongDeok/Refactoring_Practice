@@ -1,29 +1,32 @@
 package org.example.refactoring3.gildedrose2;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
-
 class GildedRose {
     Item[] items;
     public GildedRose(Item[] items) {
         this.items = items;
     }
+    // TODO TEST 코드 작성
     public void updateQuality() {
         for (int i = 0; i < items.length; i++) {
             Item item = items[i];
             ItemComparisonRecord comparisonRecord = new ItemComparisonRecord(item);
             if (comparisonRecord.isLegendItem()) continue; // 전설 아이템이면 아무 행위도 하지 않는다. (전설이니까)
 
-            // 노멀 아이템이고 퀄리티가 자연수라면 퀄리티를 감소하는데 판매기간이 음수라면 -2, 그렇지 않다면 -1 감소시킨다.
+            // 노멀 아이템이고 퀄리티가 자연수라면 퀄리티를 감소하는데 판매기간이
             if (comparisonRecord.isNormalAndPositiveQuality()) item.quality = comparisonRecord.isSellInNegativeNumber() ?
-                                                                                    item.quality-2 :
-                                                                                    item.quality-1;
+                                                                                    item.quality-2 :  // 음수라면 -2
+                                                                                    item.quality-1;   // 그렇지 않다면 -1 감소시킨다.
+
+            // TODO 추가된 변경 사항
+            // 짱 나쁜 아이템이고 퀄리티가 자연수라면 퀄리티를 감소하는데 판매기간이
+            if (comparisonRecord.isSoBadAndPositiveQuality()) item.quality = comparisonRecord.isSellInNegativeNumber() ?
+                                                                                    item.quality-4 :  // 음수라면 -4
+                                                                                    item.quality-2;   // 그렇지 않다면 -2 감소시킨다.
 
             // 특수 아이템이고 퀄리티의 최대 값인 50 이하라면 퀄리티를 1씩 증가시킨다.
             if (comparisonRecord.isSpecialAndQualityUnder50()) item.quality++;
 
-            // 특수 아이템 중 백스테이지이면서 판매일이 음수가 아니고 퀄리티가 50 이하일 때 판매일이 10 이하면 퀄리티 1를 추가 증가 5이하면 2를 추가 증가
+            // 특수 아이템 중 백스테이지이면서 판매일이 음수가 아니고 퀄리티가 50 이하일 때 판매일이
             if (comparisonRecord.isBackStageProcess()) {
                 if (item.sellIn < 11) item.quality++; // 10 이하면 퀄리티 1를 추가 증가
                 if (item.sellIn < 6) item.quality++; //  5이하면 2를 추가 증가

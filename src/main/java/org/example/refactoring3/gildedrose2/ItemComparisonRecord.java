@@ -7,16 +7,18 @@ import java.util.Set;
 // 아이템의 비교 연산을 통한 논리 자료형의 레코드
 public record ItemComparisonRecord(
         boolean isNameAgedBrie, boolean isNameBackstagePasses, boolean isQualityNaturalNumber, boolean isSellInNegativeNumber,
-        boolean isQualityUnder50, boolean isNormalItem, boolean isLegendItem) {
-    public static final String AGED_BRIE = "Aged Brie", BACK_STAGE = "Backstage passes to a TAFKAL80ETC concert", SULFURAS = "Sulfuras, Hand of Ragnaros";
-    private static final String[] specialItemNames, legendItemNames;
-    private static final Set<String> specialItemNameSet, legendItemNameSet; // 특수 아이템  // 전설 아이템
+        boolean isQualityUnder50, boolean isNormalItem, boolean isLegendItem, boolean isSoBadItem) {
+    public static final String AGED_BRIE = "Aged Brie", BACK_STAGE = "Backstage passes to a TAFKAL80ETC concert", SULFURAS = "Sulfuras, Hand of Ragnaros", CONJURED="Conjured";
+    private static final String[] specialItemNames, legendItemNames, soBadItemNames;
+    private static final Set<String> specialItemNameSet, legendItemNameSet, soBadItemNameSet; // 특수 아이템  // 전설 아이템
     // 추후 해당 배열에 존재 하는 이름을 객체로 추출하면 된다. (각 특수 아이템, 각 노멀 아이템, 각 특수 아이템에 포함된 전설 아이템)
     static{
         specialItemNames = new String[]{AGED_BRIE, BACK_STAGE, SULFURAS};
         legendItemNames = new String[]{SULFURAS};
+        soBadItemNames = new String[]{CONJURED};
         specialItemNameSet = new HashSet<>(Arrays.asList(specialItemNames));
         legendItemNameSet = new HashSet<>(Arrays.asList(legendItemNames));
+        soBadItemNameSet = new HashSet<>(Arrays.asList(soBadItemNames));
     }
     public ItemComparisonRecord(Item item) {
         this(
@@ -26,13 +28,25 @@ public record ItemComparisonRecord(
                 item.sellIn < 0,
                 item.quality < 50,
                 checkNormalItem(item),
-                checkLegendItem(item));
+                checkLegendItem(item),
+                checkSoBadItem(item));
+    }
+    private static boolean checkSoBadItem(Item item) {
+        return soBadItemNameSet.contains(item.name);
     }
     private static boolean checkLegendItem(Item item) {
         return legendItemNameSet.contains(item.name);
     }
     private static boolean checkNormalItem(Item item) {
         return !specialItemNameSet.contains(item.name);
+    }
+
+    /**
+     * <h2><li>짱 나쁜 아이템이고 퀄리티가 자연수라면 퀄리티를 감소하는데 판매기간이 음수라면 -4, 그렇지 않다면 -2 감소시킨다.</li></h2>
+     * @return isNormalItem && isQualityNaturalNumber
+     */
+    public boolean isSoBadAndPositiveQuality() {
+        return isSoBadItem && isQualityNaturalNumber;
     }
 
     /**
