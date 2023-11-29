@@ -13,10 +13,7 @@ class GildedRose {
     public void updateQuality() {
         Arrays.stream(items)
                 .map(ItemFunc::stream)
-                .filter(ItemFunc::isLegendItem)
-                .forEach(itemFunc -> itemFunc
-                        .processQualityEachItem()
-                        .processSellIn()
-                        .done());
+                .filter(ItemFunc::isNotLegendItem)
+                .forEach(itemFunc -> itemFunc.calSellIn().calQuality().done());
     }
 }

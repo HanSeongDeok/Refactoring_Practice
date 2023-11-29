@@ -1,6 +1,5 @@
 package org.example.designpattern.flyweightpattern;
 
-import javax.xml.soap.Text;
 
 public class Flyweight_Pattern {
     static TextEditor textEditor = TextEditor.factory();
