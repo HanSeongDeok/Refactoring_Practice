@@ -26,7 +26,6 @@ public class StatePattern {
         new StatePattern()
                 .setPlanetState(getPlanetState())
                 .printStateMessage();
-
     }
 
     private static PlanetState getPlanetState() {

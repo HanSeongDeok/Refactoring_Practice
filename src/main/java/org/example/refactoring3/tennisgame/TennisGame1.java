@@ -17,7 +17,7 @@ public class TennisGame1 implements TennisGame {
     }
 
     public String getScore() {
-        return TennisScoreController.control()
+        return TennisScoreDelegate.getInstance()
                     .compareScore(m_score1, m_score2)
                     .invokeScoreResult();
     }
