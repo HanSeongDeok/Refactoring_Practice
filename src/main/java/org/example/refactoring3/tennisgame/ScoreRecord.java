@@ -3,7 +3,7 @@ package org.example.refactoring3.tennisgame;
 // 두 점수 비교를 통한 결과 반환을 목적으로 하는 VO로 record 활용.
 public record ScoreRecord(int score1, int score2) {
     public ScoreRecord{
-        if (score1 < 0 || score2 < 0) throw new IllegalArgumentException("스코어 점수가 이상함.");
+        if (score1 < 0 || score2 < 0) throw new IllegalArgumentException("스코어 점수가 이상함. 음수가 있어버림.");
     }
     public String resultMessage() {
         if (score1 - score2 == 0) throw new IllegalArgumentException("스코어가 같을 때의 서비스 처리는 ScoreRecord 에서 안합니다.");

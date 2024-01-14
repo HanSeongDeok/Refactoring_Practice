@@ -16,7 +16,7 @@ public enum SameScoreName {
         this.name = name;
     }
     public static String getName(int score){
-        if (score < 0) throw new IllegalArgumentException("스코어 점수 이상함.");
+        if (score < 0) throw new IllegalArgumentException("스코어 점수 이상함. 음수가 있어버림.");
         return Arrays.stream(values())
                  .filter(v -> v.value == score)
                  .findFirst()
