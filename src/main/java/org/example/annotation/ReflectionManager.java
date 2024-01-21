@@ -13,6 +13,7 @@ public class ReflectionManager {
     private boolean isAnnotationPresent(Method method) {
         return method.isAnnotationPresent(MyAnnotation.class);
     }
+
     private void printAnnotationInfo(Method method) {
         System.out.println(method.getName() + ":" +
                 method.getDeclaredAnnotation(MyAnnotation.class).value());
