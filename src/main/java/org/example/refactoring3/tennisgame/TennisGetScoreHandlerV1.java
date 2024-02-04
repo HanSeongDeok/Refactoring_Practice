@@ -4,11 +4,10 @@ public class TennisGetScoreHandlerV1 implements TennisGetScoreHandler {
     private final String[] SCORE_NAMES = {"Love", "Fifteen", "Thirty", "Forty"};
     public TennisGetScoreHandlerV1(TennisGame1 tennisGame1){}
     @Override
-    public String compareScore(int score1, int score2) {
+    public String getScore(int score1, int score2) {
         if (score1 < 0 || score2 < 0){
             throw new IllegalArgumentException("스코어 점수 이상함. 음수가 있어버림.");
         }
-
         if (score1 == score2) {
             return SameScoreName.getName(score1);
         }
