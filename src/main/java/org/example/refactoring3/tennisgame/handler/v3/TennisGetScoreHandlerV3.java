@@ -20,9 +20,8 @@ public class TennisGetScoreHandlerV3 implements TennisGetScoreHandler {
     private boolean isMatchPoint(int score1, int score2) {
         this.score1 = score1;
         this.score2 = score2;
-        return score1 >= 3 && score2 >= 3;
+        return score1 >= 4 || score2 >= 4;
     }
-
     private String getMatchPointResult() {
         if (score1 == score2) return "Deuce";          // 매치포인트면서 동점일 경우
         return Math.abs(score1 - score2) == 1 ?
