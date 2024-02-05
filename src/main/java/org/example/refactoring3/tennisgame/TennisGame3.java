@@ -17,14 +17,13 @@ public class TennisGame3 implements TennisGame{
     public String getP2N() {
         return p2N;
     }
-    public String getScore() {
-        return TennisScoreDelegater.getInstance()
-                    .createTennisScoreHandler(this)
-                    .getScore(p1, p2);
-    }
-
     public void wonPoint(String playerName) {
         if (playerName.equals("player1")) this.p1 += 1;
         else this.p2 += 1;
+    }
+    public String getScore() {
+        return TennisScoreDelegator.getInstance()
+                    .createTennisScoreHandler(this)
+                    .getScoreResult(p1, p2);
     }
 }
