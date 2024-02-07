@@ -24,6 +24,6 @@ public class TennisGame3 implements TennisGame{
     public String getScore() {
         return TennisScoreDelegator.getInstance()
                     .createTennisScoreHandler(this)
-                    .getScoreResult(p1, p2);
+                    .getScore(p1, p2);
     }
 }

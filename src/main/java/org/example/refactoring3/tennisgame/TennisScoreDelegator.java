@@ -20,7 +20,7 @@ public class TennisScoreDelegator{
         handler = new TennisGetScoreHandlerV3(tennisGame3);
         return this;
     }
-    public String getScoreResult(int score1, int score2) {
+    public String getScore(int score1, int score2) {
         return handler.getScoreResult(score1, score2);
     }
 }
