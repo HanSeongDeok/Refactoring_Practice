@@ -2,8 +2,9 @@ package org.example.refactoring3.tennisgame.handler.v3;
 
 import org.example.refactoring3.tennisgame.TennisGame3;
 import org.example.refactoring3.tennisgame.handler.TennisGetScoreHandler;
+import org.example.refactoring3.tennisgame.handler.TennisHandlerImpl;
 
-public class TennisGetScoreHandlerV3 implements TennisGetScoreHandler {
+public class TennisGetScoreHandlerV3 extends TennisHandlerImpl {
     String[] p = new String[]{"Love", "Fifteen", "Thirty", "Forty"};
     String player1, player2;
     int score1, score2;

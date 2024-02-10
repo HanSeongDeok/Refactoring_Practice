@@ -1,20 +1,20 @@
 package org.example.refactoring3.tennisgame.handler.multi;
 
 import org.example.refactoring3.tennisgame.TennisGameMulti;
-import org.example.refactoring3.tennisgame.TennisMultiTeam;
-import org.example.refactoring3.tennisgame.handler.TennisMultiScoreHandler;
+import org.example.refactoring3.tennisgame.TennisTeam;
+import org.example.refactoring3.tennisgame.handler.TennisHandlerImpl;
 
-public class TennisMultiScoreHandlerV1 implements TennisMultiScoreHandler {
+public class TennisMultiScoreHandlerV1 extends TennisHandlerImpl {
     String[] p = new String[]{"Love", "Fifteen", "Thirty", "Forty"};
-    TennisMultiTeam team1;
-    TennisMultiTeam team2;
+    TennisTeam team1;
+    TennisTeam team2;
     int score1, score2;
     public TennisMultiScoreHandlerV1(TennisGameMulti tennisGameMulti) {
         this.team1 = tennisGameMulti.getTeam1();
         this.team2 = tennisGameMulti.getTeam2();
     }
     @Override
-    public String getScoreResult(TennisMultiTeam team1, TennisMultiTeam team2) {
+    public String getScoreResult(TennisTeam team1, TennisTeam team2) {
         return isMatchPoint(team1.getScore(), team2.getScore()) ?
                 getMatchPointResult() :
                 getNormalResult();

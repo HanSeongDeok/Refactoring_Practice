@@ -1,10 +1,10 @@
 package org.example.refactoring3.tennisgame;
 
-public class TennisMultiTeam {
+public class TennisTeam {
     String player1;
     String player2;
     int score;
-    public TennisMultiTeam(String player1, String player2) {
+    public TennisTeam(String player1, String player2) {
         this.player1 = player1;
         this.player2 = player2;
     }
