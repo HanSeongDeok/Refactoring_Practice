@@ -7,12 +7,9 @@ import org.example.refactoring3.tennisgame.handler.v3.TennisGetScoreHandlerV3;
 
 public class TennisScoreDelegator{
     /*
-     * 이런식의 Facade 객체로 활용하게 되면 OCP 위배 가능성이 존재한다 판단 됨.
+     * Facade 객체로 활용하게 되면 참조 객체가 많아 지니까 OCP 위배 가능성이 존재한다 판단 됨.
      * Template Method 객체를 따로 두어 그 객체만 참조하도록 하여 확장에만 열려있도록 하는게 좋아보임.
      */
-
-    //private TennisGetScoreHandler handler;
-    //private TennisMultiScoreHandler multiHandler;
     private TennisHandlerImpl tennisHandler;
     private static TennisScoreDelegator instance;
     public static TennisScoreDelegator getInstance(){
