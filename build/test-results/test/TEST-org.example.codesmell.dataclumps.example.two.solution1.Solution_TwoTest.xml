@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.example.codesmell.dataclumps.example.two.solution1.Solution_TwoTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-07-09T08:44:06" hostname="DESKTOP-MEO5I3C" time="0.036">
+  <properties/>
+  <testcase name="printSolution2()" classname="org.example.codesmell.dataclumps.example.two.solution1.Solution_TwoTest" time="0.036"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
