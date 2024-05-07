@@ -23,6 +23,7 @@ public class DiscountHandler {
 
     //TODO SpecialOfferType 각 타입 별 객체로 분리하여 다형성 활용
     public Discount createDiscount(){
+        // TODO X의 의미가 뭐지? -> 그거로 변수명 변경
         Discount discount = null;
         if (isTwoXTwoOverQuantity()){
             double total = offer.getArgument() * (quantity / offer.getX()) + quantity % 2 * unitPrice;
