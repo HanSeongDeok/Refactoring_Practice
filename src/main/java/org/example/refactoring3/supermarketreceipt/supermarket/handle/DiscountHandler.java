@@ -2,30 +2,30 @@ package org.example.refactoring3.supermarketreceipt.supermarket.handle;
 
 import org.example.refactoring3.supermarketreceipt.supermarket.model.*;
 
-public class DiscountHandler {
-    private final Product p;
-    private final Offer offer;
-    private final double quantity;
-    private final SupermarketCatalog catalog;
-    private final int numberOfXs;
-    private final double unitPrice;
-    private final SpecialOfferType offerType;
+import java.util.Map;
+import java.util.Optional;
 
-    public DiscountHandler(Product p, Offer offer, double quantity, SupermarketCatalog catalog){
-        this.p = p;
-        this.offer = offer;
-        this.quantity = quantity;
+public class DiscountHandler {
+    private Map<Product, Offer> offers;
+    private Map<Product, Double> productQuantities;
+    private SupermarketCatalog catalog;
+    public DiscountHandler(Map<Product, Offer> offers, Map<Product, Double> productQuantities, SupermarketCatalog catalog){
+        this.offers = offers;
+        this.productQuantities = productQuantities;
         this.catalog = catalog;
-        this.numberOfXs = (int) quantity / offer.getX();
-        this.unitPrice = catalog.getUnitPrice(p);
-        this.offerType = offer.getOfferType();
     }
 
     //TODO SpecialOfferType 각 타입 별 객체로 분리하여 다형성 활용
-    public Discount createDiscount(){
+    public Discount createDiscount(Product p) {
         // TODO X의 의미가 뭐지? -> 그거로 변수명 변경
+        Offer offer = offers.get(p);
+        double quantity = productQuantities.get(p);
+        int numberOfXs = (int) quantity / offer.getX();
+        double unitPrice = catalog.getUnitPrice(p);
+        SpecialOfferType offerType = offer.getOfferType();
+
         Discount discount = null;
-        if (isTwoXTwoOverQuantity()){
+        if (isTwoXTwoOverQuantity(p)){
             double total = offer.getArgument() * (quantity / offer.getX()) + quantity % 2 * unitPrice;
             double discountN = catalog.getUnitPrice(p) * quantity - total;
             discount = new Discount(p, "2 for " + offer.getArgument(), -discountN);
@@ -44,7 +44,11 @@ public class DiscountHandler {
         return discount;
     }
 
-    private boolean isTwoXTwoOverQuantity(){
-        return offer.getX() == 2 && quantity >= 2;
+    public static boolean isNullOfDiscount(Discount d) {
+        return Optional.ofNullable(d).isPresent();
+    }
+
+    private boolean isTwoXTwoOverQuantity(Product p){
+        return offers.get(p).getX() == 2 && productQuantities.get(p) >= 2;
     }
 }
