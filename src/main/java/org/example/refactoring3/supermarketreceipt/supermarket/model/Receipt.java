@@ -1,5 +1,7 @@
 package org.example.refactoring3.supermarketreceipt.supermarket.model;
 
+import org.example.refactoring3.supermarketreceipt.supermarket.model.discount.Discount;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
