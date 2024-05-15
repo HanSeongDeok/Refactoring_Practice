@@ -1,14 +1,12 @@
 package org.example.refactoring3.supermarketreceipt.supermarket.model.discount;
 
-import org.example.refactoring3.supermarketreceipt.supermarket.model.Offer;
+import org.example.refactoring3.supermarketreceipt.supermarket.model.offer.Offer;
 import org.example.refactoring3.supermarketreceipt.supermarket.model.Product;
-import org.example.refactoring3.supermarketreceipt.supermarket.model.SpecialOfferType;
 import org.example.refactoring3.supermarketreceipt.supermarket.model.SupermarketCatalog;
 
 import java.util.Map;
 
-public abstract class Discount {
-
+public class Discount {
     String description;
     double discountAmount;
     final Product product;
@@ -30,9 +28,6 @@ public abstract class Discount {
         this.productQuantities = productQuantities;
         this.catalog = catalog;
     }
-
-    abstract String setDescription();
-    abstract double setDiscountAmount();
 
     public String getDescription() {
         return description;

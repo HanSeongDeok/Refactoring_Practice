@@ -1,10 +1,8 @@
 package org.example.refactoring3.supermarketreceipt.supermarket.model.discount;
 
-import org.example.refactoring3.supermarketreceipt.supermarket.model.Offer;
+import org.example.refactoring3.supermarketreceipt.supermarket.model.offer.Offer;
 import org.example.refactoring3.supermarketreceipt.supermarket.model.Product;
-import org.example.refactoring3.supermarketreceipt.supermarket.model.SpecialOfferType;
 import org.example.refactoring3.supermarketreceipt.supermarket.model.SupermarketCatalog;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
 
@@ -15,11 +13,11 @@ public class Cdiscount extends Discount{
         discountAmount = setDiscountAmount();
     }
 
-    public double setDiscountAmount() {
+    private double setDiscountAmount() {
         return -productQuantities.get(product) * catalog.getUnitPrice(product) * offers.get(product).getArgument() / 100.0;
     }
 
-    public String setDescription() {
+    private String setDescription() {
         return offers.get(product).getArgument() + "% off";
     }
 }

@@ -3,6 +3,7 @@ package org.example.refactoring3.supermarketreceipt.supermarket.handle;
 import org.example.refactoring3.supermarketreceipt.supermarket.model.*;
 import org.example.refactoring3.supermarketreceipt.supermarket.model.discount.Discount;
 import org.example.refactoring3.supermarketreceipt.supermarket.model.discount.DiscountFactory;
+import org.example.refactoring3.supermarketreceipt.supermarket.model.offer.Offer;
 
 import java.util.Map;
 import java.util.Optional;

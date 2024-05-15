@@ -1,4 +1,6 @@
-package org.example.refactoring3.supermarketreceipt.supermarket.model;
+package org.example.refactoring3.supermarketreceipt.supermarket.model.offer;
+
+import org.example.refactoring3.supermarketreceipt.supermarket.model.Product;
 
 import java.util.Optional;
 
@@ -27,15 +29,6 @@ public class Offer {
 
     public int getX(){
         Optional.ofNullable(offerType).orElseThrow(NullPointerException::new);
-           if (offerType == SpecialOfferType.THREE_FOR_TWO) {
-                    return 3;
-           } else if (offerType == SpecialOfferType.TWO_FOR_AMOUNT) {
-                    return 2;
-           } else if (offerType == SpecialOfferType.FIVE_FOR_AMOUNT) {
-                   return 5;
-           }
-        return 1;
+        return offerType.getX();
     }
-
-
 }
