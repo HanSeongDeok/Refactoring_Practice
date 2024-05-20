@@ -1,17 +1,21 @@
 package org.example.refactoring3.supermarketreceipt.supermarket.model.discount;
 
-import org.example.refactoring3.supermarketreceipt.supermarket.model.offer.Offer;
+import org.example.refactoring3.supermarketreceipt.supermarket.model.Offer;
 import org.example.refactoring3.supermarketreceipt.supermarket.model.Product;
 import org.example.refactoring3.supermarketreceipt.supermarket.model.SupermarketCatalog;
 
 import java.util.Map;
 
 public class Bdiscount extends Discount{
-    public Bdiscount(Product product, Map<Product, Offer> offers, Map<Product, Double> productQuantities, SupermarketCatalog catalog) {
-        super(product, offers, productQuantities, catalog);
+    public Bdiscount() {}
 
-        description = setDescription();
+    public void setDiscountInfo(DiscountInfo info){
+        product = info.product();
+        offers = info.offers();
+        productQuantities = info.productQuantities();
+        catalog = info.catalog();
         discountAmount = setDiscountAmount();
+        description = setDescription();
     }
 
     private String setDescription() {

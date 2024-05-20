@@ -1,5 +1,4 @@
-package org.example.refactoring3.supermarketreceipt.supermarket.model.offer;
-import org.example.refactoring3.supermarketreceipt.supermarket.model.Product;
+package org.example.refactoring3.supermarketreceipt.supermarket.model;
 import java.util.Optional;
 
 public class Offer {

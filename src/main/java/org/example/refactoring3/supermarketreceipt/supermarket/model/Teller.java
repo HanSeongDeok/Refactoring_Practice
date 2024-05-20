@@ -1,8 +1,5 @@
 package org.example.refactoring3.supermarketreceipt.supermarket.model;
 
-import org.example.refactoring3.supermarketreceipt.supermarket.model.offer.Offer;
-import org.example.refactoring3.supermarketreceipt.supermarket.model.offer.SpecialOfferType;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

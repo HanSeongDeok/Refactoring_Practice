@@ -2,7 +2,6 @@ package org.example.refactoring3.supermarketreceipt.supermarket.model;
 
 import org.example.refactoring3.supermarketreceipt.supermarket.handle.DiscountHandler;
 import org.example.refactoring3.supermarketreceipt.supermarket.handle.ProductHandler;
-import org.example.refactoring3.supermarketreceipt.supermarket.model.offer.Offer;
 
 import java.util.*;
 

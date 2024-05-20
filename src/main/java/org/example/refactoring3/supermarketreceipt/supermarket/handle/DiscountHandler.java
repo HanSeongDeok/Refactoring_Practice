@@ -3,7 +3,8 @@ package org.example.refactoring3.supermarketreceipt.supermarket.handle;
 import org.example.refactoring3.supermarketreceipt.supermarket.model.*;
 import org.example.refactoring3.supermarketreceipt.supermarket.model.discount.Discount;
 import org.example.refactoring3.supermarketreceipt.supermarket.model.discount.DiscountFactory;
-import org.example.refactoring3.supermarketreceipt.supermarket.model.offer.Offer;
+import org.example.refactoring3.supermarketreceipt.supermarket.model.Offer;
+import org.example.refactoring3.supermarketreceipt.supermarket.model.discount.DiscountInfo;
 
 import java.util.Map;
 import java.util.Optional;
@@ -19,7 +20,7 @@ public class DiscountHandler {
     }
 
     public Discount createDiscount(Product p) {
-        return new DiscountFactory(p, offers, productQuantities, catalog).factory();
+        return new DiscountFactory(new DiscountInfo(p, offers, productQuantities, catalog)).factory();
     }
 
     public static boolean isNullOfDiscount(Discount d) {

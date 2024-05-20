@@ -6,15 +6,8 @@ import org.example.refactoring3.supermarketreceipt.supermarket.model.Supermarket
 
 import java.util.Map;
 
-public class DiscountFactory {
-    DiscountInfo discountInfo;
-
-    public DiscountFactory(DiscountInfo discountInfo) {
-        this.discountInfo = discountInfo;
-    }
-    public Discount factory() {
-        return discountInfo.offers().get(discountInfo.product())
-                .getOfferType()
-                .getDiscount(discountInfo);
-    }
+public record DiscountInfo(Product product,
+        Map<Product, Offer>offers,
+        Map<Product, Double> productQuantities,
+        SupermarketCatalog catalog) {
 }
