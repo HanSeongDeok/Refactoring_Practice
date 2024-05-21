@@ -8,12 +8,14 @@ import java.util.Map;
 
 public class DiscountFactory {
     DiscountInfo discountInfo;
+    Product p;
 
-    public DiscountFactory(DiscountInfo discountInfo) {
+    public DiscountFactory(Product p, DiscountInfo discountInfo) {
         this.discountInfo = discountInfo;
+        this.p = p;
     }
     public Discount factory() {
-        return discountInfo.offers().get(discountInfo.product())
+        return discountInfo.offers().get(p)
                 .getOfferType()
                 .getDiscount(discountInfo);
     }

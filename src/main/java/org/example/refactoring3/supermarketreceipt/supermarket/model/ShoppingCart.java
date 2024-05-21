@@ -1,7 +1,9 @@
 package org.example.refactoring3.supermarketreceipt.supermarket.model;
 
 import org.example.refactoring3.supermarketreceipt.supermarket.handle.DiscountHandler;
+import org.example.refactoring3.supermarketreceipt.supermarket.handle.OfferHandler;
 import org.example.refactoring3.supermarketreceipt.supermarket.handle.ProductHandler;
+import org.example.refactoring3.supermarketreceipt.supermarket.model.discount.DiscountInfo;
 
 import java.util.*;
 
@@ -23,16 +25,20 @@ public class ShoppingCart {
     }
 
     public void addItemQuantity(Product product, double quantity) {
-        new ProductHandler(product, quantity, getItems(), getProductQuantities())
-                .setShoppingCart();
+        new ProductHandler(new ProductInfo(product, quantity, items, productQuantities))
+                .addItem();
         }
         
     void handleOffers(Receipt receipt, Map<Product, Offer> offers, SupermarketCatalog catalog) {
-        DiscountHandler handler = new DiscountHandler(offers, productQuantities, catalog);
-        getProductQuantities().keySet().stream()
-                .filter(offers::containsKey)
-                .map(handler::createDiscount)
-                .filter(DiscountHandler::isNullOfDiscount)
-                .forEach(receipt::addDiscount);
+        // 방법 1
+        /*OfferHandler offerHandler = new OfferHandler(new OfferInfo(receipt, new DiscountInfo(offers, productQuantities, catalog)));
+        offerHandler.addDiscountInReceipt();*/
+
+        // 방법 2
+        new OfferHandler(OfferInfo.getInstance()
+                .setReceipt(receipt)
+                .setDiscountInfo(new DiscountInfo(offers, productQuantities, catalog))
+                .build())
+                .addDiscountInReceipt();
     }
 }
