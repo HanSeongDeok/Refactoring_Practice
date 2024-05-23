@@ -31,14 +31,16 @@ public class ShoppingCart {
         
     void handleOffers(Receipt receipt, Map<Product, Offer> offers, SupermarketCatalog catalog) {
         // 방법 1
-        /*OfferHandler offerHandler = new OfferHandler(new OfferInfo(receipt, new DiscountInfo(offers, productQuantities, catalog)));
-        offerHandler.addDiscountInReceipt();*/
-
-        // 방법 2
         new OfferHandler(OfferInfo.getInstance()
                 .setReceipt(receipt)
                 .setDiscountInfo(new DiscountInfo(offers, productQuantities, catalog))
                 .build())
                 .addDiscountInReceipt();
+
+        // 방법 2
+        /*
+        OfferHandler offerHandler = new OfferHandler(new OfferInfo(receipt, new DiscountInfo(offers, productQuantities, catalog)));
+        offerHandler.addDiscountInReceipt();
+        */
     }
 }
