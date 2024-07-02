@@ -6,8 +6,8 @@ import org.example.refactoring3.supermarketreceipt.supermarket.model.Supermarket
 
 import java.util.Map;
 
-public record DiscountInfo(Product product,
-        Map<Product, Offer>offers,
+public record DiscountInfo(
+        Map<Product, Offer> offers,
         Map<Product, Double> productQuantities,
         SupermarketCatalog catalog) {
 }
