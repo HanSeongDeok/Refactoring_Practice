@@ -23,8 +23,7 @@ public class ShoppingCart {
     }
 
     public void addItemQuantity(Product product, double quantity) {
-        new ProductHandler(product, quantity, getItems(), getProductQuantities())
-                .setShoppingCart();
+        new ProductHandler(product, quantity, getItems(), getProductQuantities()).addItems();
         }
         
     void handleOffers(Receipt receipt, Map<Product, Offer> offers, SupermarketCatalog catalog) {

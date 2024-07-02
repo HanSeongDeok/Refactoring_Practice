@@ -3,7 +3,6 @@ package org.example.refactoring3.supermarketreceipt.supermarket.handle;
 import org.example.refactoring3.supermarketreceipt.supermarket.model.Product;
 import org.example.refactoring3.supermarketreceipt.supermarket.model.ProductQuantity;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -20,7 +19,7 @@ public class ProductHandler {
         this.productQuantities = productQuantities;
     }
 
-    public void setShoppingCart(){
+    public void addItems(){
         items.add(new ProductQuantity(product, quantity));
         productQuantities = productQuantities.containsKey(product) ?
                 updateProductQuantities(product, quantity) :
